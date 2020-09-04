@@ -31,3 +31,31 @@ class TecnicoInfo(Aluno):
 
 	def __init__(self):
 		print("Criou o tecnico")
+		
+		
+
+pessoa1 = Pessoa()
+pessoa1.nomecompleto = "Herbert"
+pessoa1.mostrarNome()
+
+
+
+
+aluno1 = Aluno()
+aluno1.nomecompleto = "Herbert"
+aluno1.mostrarNome()
+
+
+tec1 = TecnicoInfo()
+tec1.nomecompleto = "Herbert"
+tec1.mostrarNome()
+
+
+print(tec1)
+
+tec2 = TecnicoInfo()
+print(tec2)
+
+tec1 = TecnicoInfo()
+print(tec3)
+
