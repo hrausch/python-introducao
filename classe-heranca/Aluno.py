@@ -5,9 +5,7 @@ class Pessoa:
 	def __init__(self):
 		print("Criou uma Pessoa")
 
-	# def __init__(self, nome, cpf):
-	# 	self.nomecompleto = nome
-	# 	self.cpf = cpf
+
 	def mostrarNome(self):
 		print("Nome (classe Pessoa): " + self.nomecompleto)
 
