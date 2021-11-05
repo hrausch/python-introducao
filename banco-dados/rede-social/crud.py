@@ -2,9 +2,11 @@ from sqlalchemy import create_engine, or_
 from sqlalchemy.orm import sessionmaker
 
 
-from model.usuario import Usuario
+from model.models import Usuario
 
-engine = create_engine("mysql+pymysql://root:root@localhost/rede_social?charset=utf8mb4", echo=False)
+engine = create_engine(
+    "mysql+pymysql://herbertc_root:herbertr00t@herbert.cefetvga.pro.br/herbertc_company?charset=utf8mb4", echo=True)
+
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -26,6 +28,7 @@ def create():
 
     #perceba que cada objeto agora possui o campo id preenchido com o valor do banco de dados
     print(user1.id)
+    session.commit()
     print(user2.id)
 
 
@@ -33,7 +36,8 @@ def read():
 
     #recupera todas tuplas da tabela Usuario ordenado pelo ID
     # SELECT * FROM Usuario ORDER BY id
-    for tupla in session.query(Usuario).order_by(Usuario.id):
+    tuplas = session.query(Usuario).order_by(Usuario.id)
+    for tupla in tuplas:
         print(tupla.id, " - ", tupla.email)
 
     #recupera todas tuplas da tabela Usuario - seleciona apenas as colunas email e nome
@@ -46,9 +50,7 @@ def read():
         print(tuplas.id, '-', tuplas.nome)
 
     # SELECT * FROM Usuario WHERE email='hrf@hrf.com' AND nome like '%herbert%'
-    for tuplas in session.query(Usuario).\
-            filter(Usuario.email=='hrf@hrf.com').\
-            filter(Usuario.nome.like('%herbert%')):
+    for tuplas in session.query(Usuario).filter(Usuario.email=='hrf@hrf.com').filter(Usuario.nome.like('%herbert%')):
         print(tuplas.id, '-', tuplas.nome)
 
     # SELECT * FROM Usuario WHERE email='hrf@hrf.com' OR nome like '%Cersei%'
@@ -84,6 +86,7 @@ def delete():
     user = session.query(Usuario).get(5)
 
     #2 - adicione a remocao do objeto na session
+    #DELETE FROM Usuario where id=5
     session.delete(user)
 
     #3 - execute a operacao no BD

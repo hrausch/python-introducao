@@ -1,8 +1,10 @@
 from sqlalchemy import *
 
-from model.usuario import Usuario
+from model.models import Usuario, Publicacao
 
-engine = create_engine("mysql+pymysql://root:root@localhost/rede_social?charset=utf8mb4", echo=True)
+engine = create_engine("mysql+pymysql://herbertc_root:herbertr00t@herbert.cefetvga.pro.br/herbertc_company?charset=utf8mb4", echo=True)
 
 usuario = Usuario.__table__
 usuario.create(engine, checkfirst=True)
+
+Publicacao.__table__.create(engine, checkfirst=True)
