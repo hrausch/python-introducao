@@ -30,7 +30,6 @@ class TecnicoInfo(Aluno):
 	def __init__(self):
 		print("Criou o tecnico")
 		
-		
 
 pessoa1 = Pessoa()
 pessoa1.nomecompleto = "Herbert"
@@ -54,6 +53,5 @@ print(tec1)
 tec2 = TecnicoInfo()
 print(tec2)
 
-tec1 = TecnicoInfo()
+tec3 = TecnicoInfo()
 print(tec3)
-
